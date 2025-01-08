@@ -7,11 +7,8 @@ export const asyncSermon = createAsyncThunk('sermon/asyncSermon',(_,{rejectWithV
     return axios.get(Env.api+'api/public/sunrise/sermons')
     .then(resp=>{
         console.log("Fetch Success (Sermons)", resp);
-
-
-        // 최신꺼가 앞으로 가게 오름차순 정렬
-        resp.data
-
+         // 최신꺼가 앞으로 가게 오름차순 정렬
+        resp.data.sort((a:any,b:any)=>new Date(b.date).getTime()-new Date(a.date).getTime());
         return resp.data;
     }).catch(error=>{
         console.log("Failed to fetch data: Axios Error (Sermons)", error);
