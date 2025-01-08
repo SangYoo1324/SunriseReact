@@ -7,7 +7,7 @@ export const asyncSermon = createAsyncThunk('sermon/asyncSermon',(_,{rejectWithV
     return axios.get(Env.api+'api/public/sunrise/sermons')
     .then(resp=>{
         console.log("Fetch Success (Sermons)", resp);
-         // 최신꺼가 앞으로 가게 오름차순 정렬
+         // 최신꺼가 앞으로 가게 내림차순 정렬
         resp.data.sort((a:any,b:any)=>new Date(b.date).getTime()-new Date(a.date).getTime());
         return resp.data;
     }).catch(error=>{
@@ -15,6 +15,18 @@ export const asyncSermon = createAsyncThunk('sermon/asyncSermon',(_,{rejectWithV
         return rejectWithValue("Rejected. If you want to add some default case in case of API failure, please us this action.payload");// action.payload 에 전달
     })
 })
+
+export const postSermon = createAsyncThunk('sermon/postSermon', (data:any,{rejectWithValue}:any)=>{
+
+    return axios.post(Env.api+'api/public/sunrise/sermons',data)
+    .then(resp=>{
+        console.log("Post Success (Sermons)", resp);
+        return resp.data;
+    })
+    .catch(error=>{
+        return rejectWithValue("Rejected. If you want to add some default case in case of API failure, please us this action.payload");
+    })
+});
 
 export const SermonSlice = createSlice({
     name: 'sermon',

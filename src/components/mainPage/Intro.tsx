@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import SectionTitle from '../common/SectionTitle';
 import OpeningParagraph from '../common/OpeningParagraph';
 import { AddLocation, CalendarMonthRounded, ContactMailRounded, DocumentScannerRounded, EditCalendarRounded, Facebook, LocationCity, PhotoSizeSelectLarge, SourceRounded, YouTube } from '@mui/icons-material';
@@ -7,7 +7,22 @@ import Nav1 from '../../assets/mainPage/nav1.gif';
 import Nav2 from '../../assets/mainPage/nav2.gif';
 import Nav3 from '../../assets/mainPage/nav3.gif';
 import Nav4 from '../../assets/mainPage/nav4.gif';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../context/redux/store';
+import { asyncSermon } from '../../context/redux/slice/SermonSlice';
 function intro(props) {
+
+    const dispatch = useDispatch<AppDispatch>();
+    const sermonState = useSelector((state:any)=>{
+        console.log("Sermon State: ", state.sermon.data);
+        return state.sermon;
+    });
+
+        useEffect(()=>{
+        
+            dispatch(asyncSermon());
+        },[]);
+
     return (
         <section>
             <SectionTitle title='You will find Jesus Here!' subTitle='Hello, Welcome to Sunrise Christ Community Church!'/>
@@ -18,10 +33,17 @@ function intro(props) {
                 {/* left side  */}
                 <div className='flex flex-col gap-4 mb-7'>
       
-                <iframe  src="https://www.youtube.com/embed/LxWYiSz8wNM"
-                    className="mx-auto h-[400px] w-full md:w-[95%] md:h-[500px]" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+                {
+                sermonState.data.length>0 ? (
+                    <iframe
+              src={sermonState.data[0].iframe}
+              className="mx-auto h-[400px] w-full md:w-[95%] md:h-[500px]"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            ></iframe> 
+                ): (<>Loading...</>)
+                }
 
                 {/* pastor card  */}
                 <div className="pastor-card lg:grid lg:grid-cols-3 gap-5 p-4 border border-gray-300 rounded-lg shadow-lg">
@@ -134,3 +156,7 @@ function intro(props) {
 }
 
 export default intro;
+
+function dispatch(arg0: any) {
+    throw new Error('Function not implemented.');
+}

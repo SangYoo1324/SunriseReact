@@ -7,6 +7,7 @@ import Youth from "./routes/YouthPage"
 import Resources from "./routes/ResourcesPage"
 import Photos from "./routes/photos/Photos"
 import ViewPhoto from "./routes/photos/ViewPhoto"
+import AdminPage from "./routes/AdminPage"
 
 function App() {
   
@@ -20,6 +21,7 @@ function App() {
       <Route path= "/resources" element={<Resources/>}/>
       <Route path= "/photos" element={<Photos/>}/>
       <Route path="photo/:id" element={<ViewPhoto/>}/>
+      <Route path="admin" element={<AdminPage/>}/>
       </Routes>
   )
 }
