@@ -1,0 +1,74 @@
+/* Roboto Serif */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap');
+
+body {
+    font-family: 'Outfit', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto Serif', serif;
+  }
+
+
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Logo 기울어진 폰트  */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+@layer base {
+    button {
+        @apply border py-2 px-3 rounded-full
+    }
+}
+
+.regular-btn {
+  border: none;
+}
+
+.boot-container {
+    width: 100%;       /* 기본적으로 전체 너비 사용 */
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto; /* 가운데 정렬 */
+    margin-left: auto;
+  }
+  
+  @media (min-width: 576px) {
+    .boot-container {
+      max-width: 540px; /* 작은 화면(SM) 이상에서는 최대 너비 540px */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .boot-container {
+      max-width: 720px; /* 중간 화면(MD) 이상에서는 최대 너비 720px */
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .boot-container {
+      max-width: 960px; /* 큰 화면(LG) 이상에서는 최대 너비 960px */
+    }
+  }
+  
+  @media (min-width: 1200px) {
+    .boot-container {
+      max-width: 1140px; /* 매우 큰 화면(XL) 이상에서는 최대 너비 1140px */
+    }
+  }
+  
+  @media (min-width: 1400px) {
+    .boot-container {
+      max-width: 1320px; /* 초대형 화면(XXL) 이상에서는 최대 너비 1320px */
+    }
+  }
+
+
+  section{
+    background-color: white;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
