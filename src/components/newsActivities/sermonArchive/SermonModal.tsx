@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function Sermon({ isOpen, onClose }) {
+function SermonModal({ isOpen, onClose, sermonItem }) {
 
     const [isModalBodyOpened, setIsModalBodyOpened] = useState(false);
 
@@ -19,6 +19,10 @@ function Sermon({ isOpen, onClose }) {
         if (isOpen) setIsModalBodyOpened(true);
     }, [isOpen]);
 
+    useEffect(()=>{
+        console.log("sermonItem::", sermonItem);
+    },[]);
+
 
     return (
         <div className={`${isOpen ? 'opacity-100 visible' : 'opacity-0 invisible'} transition-opacity duration-300
@@ -33,12 +37,18 @@ function Sermon({ isOpen, onClose }) {
 
                     {/* bar  */}
                     <div
-                     onClick={handleClose}
-                    className="w-12 h-1.5 px-3 py-1 bg-gray-400 rounded-full mx-auto mb-4 hover:cursor-pointer hover:bg-yellow-300"></div>
+                        onClick={handleClose}
+                        className="w-12 h-1.5 px-3 py-1 bg-gray-400 rounded-full mx-auto mb-4 hover:cursor-pointer hover:bg-yellow-300"></div>
 
-                    <h2 className="text-xl font-bold mb-4">Modal Title</h2>
+                    <h2 className="text-xl font-bold mb-4">{sermonItem.title}</h2>
                     <p className="text-gray-700">
-                        This is the modal content. You can add any elements here like text, buttons, or forms.
+                        <iframe
+                            src={sermonItem.iframe}
+                            className="mx-auto h-[400px] w-full md:w-[95%] md:h-[500px]"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
+                            allowFullScreen
+                        ></iframe>
                     </p>
                     {/* <button
                        
@@ -53,4 +63,4 @@ function Sermon({ isOpen, onClose }) {
     );
 }
 
-export default Sermon;
+export default SermonModal;

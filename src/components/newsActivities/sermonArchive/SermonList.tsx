@@ -6,7 +6,8 @@ import { AppDispatch } from '../../../context/redux/store';
 import { asyncSermon } from '../../../context/redux/slice/SermonSlice';
 import GenericLoading from '../../common/GenericLoading';
 import Pagination from '../../common/Pagination';
-import Sermon from './Sermon';
+import { SermonItem } from '../../../interface/SermonItem';
+import SermonModal from './SermonModal';
 
 function SermonList(props) {
 
@@ -17,9 +18,31 @@ function SermonList(props) {
     const [sermonListByPage, setSermonListByPage] = useState([]);
 
     const [isOpen, setIsOpen] = useState(false);
+    const [sermon, setSermon] = useState({
+        title: 'aaaaaa',
+        iframe: 'https://www.youtube.com/embed/KyU74Ux58ik',
+        scripture: '',
+        date: ''
+    });
+
+
+    // trigger modal opens the modal and also set the sermonItem Object clicked each time
+    const triggerModal = (sermon:SermonItem)=>{
+        setIsOpen(true);
+        setSermon(
+           sermon
+    );
+
+    }
 
     const onClose = ()=>{
         setIsOpen(false);
+        setSermon({
+            title: 'aaaaaa',
+            iframe: 'https://www.youtube.com/embed/KyU74Ux58ik',
+            scripture: '',
+            date: ''
+        });
     }
     
     useEffect(()=>{
@@ -53,14 +76,19 @@ function SermonList(props) {
             <SectionTitle subTitle={"Sunday Services"} title={"Weekly Sunday Service Archive"}/> 
             <div>
              <>
-                <GenericItemList source={sermonListByPage || []} linkBaseAddress={undefined} imgParamName={undefined} hasThumbnail={true} staticImg={'/assets/biblepic.jpg'} />
+                <GenericItemList source={sermonListByPage || []} linkBaseAddress={undefined} 
+                imgParamName={undefined} hasThumbnail={true} staticImg={'/assets/biblepic.jpg'} triggerModal={triggerModal}/>
+
+
+
                 <Pagination length={ sermonState.data? sermonState.data.length :0} perPage={6} setPage={setPage}/>
             </>
 
             
             </div>
-            <button onClick={()=>setIsOpen(true)}>Open</button>
-            <Sermon isOpen={isOpen} onClose={onClose}/>
+
+            {/* sermon modal  */}
+            <SermonModal isOpen={isOpen} onClose={onClose} sermonItem= {sermon}/>
         </section>
     );
 }

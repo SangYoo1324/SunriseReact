@@ -15,7 +15,7 @@ function intro(props) {
     const dispatch = useDispatch<AppDispatch>();
     const sermonState = useSelector((state:any)=>{
         console.log("Sermon State: ", state.sermon.data);
-        return state.sermon.data;
+        return state.sermon;
     });
 
         useEffect(()=>{
@@ -34,9 +34,9 @@ function intro(props) {
                 <div className='flex flex-col gap-4 mb-7'>
       
                 {
-                sermonState && sermonState.length>0 ? (
+                sermonState.data && sermonState.data.length>0 ? (
                     <iframe
-              src={sermonState[0].iframe}
+              src={sermonState.data[0].iframe}
               className="mx-auto h-[400px] w-full md:w-[95%] md:h-[500px]"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
