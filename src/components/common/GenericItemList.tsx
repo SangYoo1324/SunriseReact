@@ -59,7 +59,7 @@ function GenericItemList({ source = [], linkBaseAddress, imgParamName, hasThumbn
                         <div className="p-4">
                             <p className="text-gray-600 mt-2 text-sm line-clamp-2 overflow-hidden">{e.description || "No description available."}</p>
                             <p className="text-gray-400 mt-2 text-xs">
-                                {new Date(e.date).toLocaleDateString()}
+                                {new Date(e.date).toLocaleString()}
                             </p>
                         </div>
                     </div>

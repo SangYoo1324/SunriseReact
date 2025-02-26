@@ -53,7 +53,7 @@ function RecentNews(props) {
                 <div className='grid lg:grid-cols-2 gap-5'>
 
                     {recentNews.data.map((obj)=>(
-                        <GenericCard> 
+                        <GenericCard img_url={obj.s3_url}> 
                         <div className='my-2'>
                             <h3 className="text-2xl font-bold">{obj.title}</h3>
                             <div className='text-indigo-800 font-semibold flex flex-col items-end my-2'>

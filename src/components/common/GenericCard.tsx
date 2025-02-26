@@ -30,13 +30,13 @@ const GenericCardStyle = styled.div`
 `;
 
 
-function GenericCard({children}) {
+function GenericCard({children, img_url}) {
     return (
         <GenericCardStyle className='cursor-pointer lg:grid lg:grid-cols-3 gap-2 lg:p-2 p-4 border border-gray-400 rounded-xl shadow-extra-dark transition-shadow duration-300'>
             <div className='img-wrap  m-auto lg:col-span-1'>
             <img
             className='w-[95%] h-[95%] max-h-[250px] object-contain'
-            src="https://sammyoopublicbucket.s3.us-west-2.amazonaws.com/sunrise_news_hebrews4d6622fc-5797-4b94-bf0d-02074f7855e3.png" alt="" />
+            src={img_url} alt="" />
 
             </div>
 
