@@ -4,7 +4,7 @@ const prod = 'https://ps-its.com/'
 
 
 const Env = {
-    api: dev
+    api: prod
 }
 
 export default Env;
