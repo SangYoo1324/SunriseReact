@@ -57,7 +57,11 @@ function RecentNews(props) {
                         <div className='my-2'>
                             <h3 className="text-2xl font-bold">{obj.title}</h3>
                             <div className='text-indigo-800 font-semibold flex flex-col items-end my-2'>
-                                <p>{new Date(obj.startDate).toLocaleDateString()} ~ {new Date(obj.endDate).toLocaleDateString()}</p>
+                                {obj.recurring ? 
+                            (  <p>{new Date(obj.startDate).toLocaleDateString()} ~ {new Date(obj.endDate).toLocaleDateString()}</p>) :
+                            (  <p>{new Date(obj.startDate).toLocaleDateString()}</p>)    
+                            }
+                              
                                 <p>{obj.recurring? "Every": ""} {obj.dayOfWeek}</p>
                             </div>
 
