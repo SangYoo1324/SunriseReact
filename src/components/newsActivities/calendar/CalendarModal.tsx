@@ -57,6 +57,7 @@ function CalendarModal(props) {
     <p className="text-xl font-medium text-gray-800">
       {dayjs(selectedEvent.date).format("YYYY-MMMM-DD")}
     </p>
+    <p className="text-xl font-medium text-gray-800"> {selectedEvent.time}</p>
   </div>
 
   {/* Description */}

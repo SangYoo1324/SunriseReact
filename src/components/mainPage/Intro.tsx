@@ -10,6 +10,7 @@ import Nav4 from '../../assets/mainPage/nav4.gif';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '../../context/redux/store';
 import { asyncSermon } from '../../context/redux/slice/SermonSlice';
+import { Link } from 'react-router-dom';
 function intro(props) {
 
     const dispatch = useDispatch<AppDispatch>();
@@ -22,7 +23,7 @@ function intro(props) {
         
             dispatch(asyncSermon());
         },[]);
-
+//   <Link onClick={handleRouteChange} to="/" className="flex justify-around"></Link>
     return (
         <section>
             <SectionTitle title='You will find Jesus Here!' subTitle='Hello, Welcome to Sunrise Christ Community Church!'/>
@@ -95,21 +96,21 @@ function intro(props) {
                 <div className='grid grid-cols-2 lg:gap-2 gap-1 lg:px-2 py-8'>
 
                 {/* card1 */}
-                <div className='overflow-hidden hover:shadow-extra-dark'>
+                <Link className='overflow-hidden hover:shadow-extra-dark' to="/visitors">
                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer' style={{backgroundImage: `url(${Nav1})`}}>
                     <h5>Location</h5>
                    <AddLocation/>
                 </div>
-                </div>
+                </Link>
                 {/* card2 */}
-                <div className='overflow-hidden hover:shadow-extra-dark'>
+                <Link className='overflow-hidden hover:shadow-extra-dark' to="/resources">
                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer' style={{backgroundImage: `url(${Nav2})`}}>
                     <h5 className='lg:text-base text-xs'>News & Events</h5>
                     <EditCalendarRounded/>
                 </div>  
-                </div>  
+                </Link>  
                 {/* card3 */}
                 <div className='overflow-hidden hover:shadow-extra-dark'>
                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
