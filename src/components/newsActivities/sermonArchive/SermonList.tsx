@@ -32,6 +32,11 @@ function SermonList(props) {
     useEffect(() => {
         if (location.hash === "#sermon" && sermonRef.current) {
             sermonRef.current.scrollIntoView({ behavior: "smooth" })
+
+            // 50vh만큼 더 내리기 (약간 딜레이 줘야 함)
+            setTimeout(() => {
+                window.scrollBy({ top: window.innerHeight * 0.5, behavior: "smooth" });
+            }, 300); // scrollIntoView 끝난 직후
         }
     }, [location])
 

@@ -48,8 +48,8 @@ function intro(props) {
 
                         {/* sermon Archive 로 바로 가게 해주는 navigation button  */}
                         <div className='flex justify-center items-center'>
-                            <button className='w-full md:w-[95%] flex justify-center items-center gap-2 px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-white font-semibold rounded-lg shadow-md transition duration-300'
-                            ><div className='text-lg'>Proceed to Sermon Archive.. &nbsp;&nbsp;<AutoStories/></div></button>
+                            <Link to="/news#sermon" className='w-full md:w-[95%] flex justify-center items-center gap-2 px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-white font-semibold rounded-lg shadow-md transition duration-300'
+                            ><div className='text-lg'>Proceed to Sermon Archive.. &nbsp;&nbsp;<AutoStories/></div></Link>
                         </div>
 
 
