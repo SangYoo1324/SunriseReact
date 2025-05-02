@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useReducer, useRef } from 'react';
 import PageTitle from '../components/common/PageTitle';
 import MonthCalendar from '../components/newsActivities/calendar/MonthCalendar';
 import CalendarModal from '../components/newsActivities/calendar/CalendarModal';
@@ -7,6 +7,7 @@ import { AppDispatch } from '../context/redux/store';
 import { asyncEventPost } from '../context/redux/slice/EventPostSlice';
 import GlobalContext from '../context/GlobalContext';
 import SermonList from '../components/newsActivities/sermonArchive/SermonList';
+import { useLocation } from 'react-router-dom';
 
 function News(props) {
     const {showCalendarModal, setEventPosts} = useContext(GlobalContext);
@@ -30,6 +31,7 @@ function News(props) {
                <MonthCalendar/>
                {showCalendarModal &&<CalendarModal/>}
                <SermonList/>
+               
         </div>
     );
 }

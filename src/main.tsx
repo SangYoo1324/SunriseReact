@@ -8,6 +8,7 @@ import Footer from './components/Footer.tsx'
 import { Provider } from 'react-redux'
 import store from './context/redux/store.ts'
 import ContextWrapper from './context/ContextWrapper.tsx'
+import RouterScrollToTop from './routes/RouterScrollToTop.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')!).render(
     <div>
 
     <BrowserRouter>
+    <RouterScrollToTop/>
     <NavBar></NavBar>
     <App />
     <Footer></Footer>

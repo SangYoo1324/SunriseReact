@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import SectionTitle from '../../common/SectionTitle';
 import GenericItemList from '../../common/GenericItemList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,12 +8,13 @@ import GenericLoading from '../../common/GenericLoading';
 import Pagination from '../../common/Pagination';
 import { SermonItem } from '../../../interface/SermonItem';
 import SermonModal from './SermonModal';
+import { useLocation } from 'react-router-dom';
 
 function SermonList(props) {
 
     const perPage = 6;
     const dispatch = useDispatch<AppDispatch>();
-    const sermonState = useSelector((state:any)=>state.sermon);
+    const sermonState = useSelector((state: any) => state.sermon);
     const [page, setPage] = useState(0);
     const [sermonListByPage, setSermonListByPage] = useState([]);
 
@@ -25,17 +26,26 @@ function SermonList(props) {
         date: ''
     });
 
+    // sermon archive 만 보려고  link 타고 왔을 때 
+    const sermonRef = useRef(null);
+    const location = useLocation();
+    useEffect(() => {
+        if (location.hash === "#sermon" && sermonRef.current) {
+            sermonRef.current.scrollIntoView({ behavior: "smooth" })
+        }
+    }, [location])
+
 
     // trigger modal opens the modal and also set the sermonItem Object clicked each time
-    const triggerModal = (sermon:SermonItem)=>{
+    const triggerModal = (sermon: SermonItem) => {
         setIsOpen(true);
         setSermon(
-           sermon
-    );
+            sermon
+        );
 
     }
 
-    const onClose = ()=>{
+    const onClose = () => {
         setIsOpen(false);
         setSermon({
             title: 'aaaaaa',
@@ -44,51 +54,51 @@ function SermonList(props) {
             date: ''
         });
     }
-    
-    useEffect(()=>{
+
+    useEffect(() => {
         dispatch(asyncSermon());
 
-    },[]);
+    }, []);
 
-    useEffect(()=>{
+    useEffect(() => {
 
-    },[page, sermonState]);
+    }, [page, sermonState]);
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("Page chnged to,", page);
-        if(!sermonState.error && sermonState.data && sermonState.data.length>0){
-            let trimmer = sermonState.data.slice(page*perPage, (page+1)*perPage);
+        if (!sermonState.error && sermonState.data && sermonState.data.length > 0) {
+            let trimmer = sermonState.data.slice(page * perPage, (page + 1) * perPage);
             setSermonListByPage(trimmer);
         }
     }, [page, sermonState.data]);
 
 
 
-    if(sermonState.loading) return (<>
-        <SectionTitle subTitle={"Sunday Services"} title={"Weekly Sunday Service Archive"}/> 
-        <GenericLoading/>
+    if (sermonState.loading) return (<>
+        <SectionTitle subTitle={"Sunday Services"} title={"Weekly Sunday Service Archive"} />
+        <GenericLoading />
     </>)
 
 
 
     return (
         <section className='relative'>
-            <SectionTitle subTitle={"Sunday Services"} title={"Weekly Sunday Service Archive"}/> 
-            <div>
-             <>
-                <GenericItemList source={sermonListByPage || []} linkBaseAddress={undefined} 
-                imgParamName={undefined} hasThumbnail={true} staticImg={'/assets/biblepic.jpg'} triggerModal={triggerModal}/>
+            <SectionTitle subTitle={"Sunday Services"} title={"Weekly Sunday Service Archive"} />
+            <div ref={sermonRef}>
+                <>
+                    <GenericItemList source={sermonListByPage || []} linkBaseAddress={undefined}
+                        imgParamName={undefined} hasThumbnail={true} staticImg={'/assets/biblepic.jpg'} triggerModal={triggerModal} />
 
 
 
-                <Pagination length={ sermonState.data? sermonState.data.length :0} perPage={6} setPage={setPage}/>
-            </>
+                    <Pagination length={sermonState.data ? sermonState.data.length : 0} perPage={6} setPage={setPage} />
+                </>
 
-            
+
             </div>
 
             {/* sermon modal  */}
-            <SermonModal isOpen={isOpen} onClose={onClose} sermonItem= {sermon}/>
+            <SermonModal isOpen={isOpen} onClose={onClose} sermonItem={sermon} />
         </section>
     );
 }

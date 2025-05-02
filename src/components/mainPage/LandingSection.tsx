@@ -30,7 +30,7 @@ const ArrowContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 5px;
-
+    
     .arrow{
     animation: ${bounce} 1s infinite;
     }
