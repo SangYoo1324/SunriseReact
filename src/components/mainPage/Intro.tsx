@@ -127,29 +127,29 @@ function intro(props) {
                                 </div>
                             </Link>
                             {/* card4 */}
-                            <div className='overflow-hidden hover:shadow-extra-dark'>
+                            <Link className='overflow-hidden hover:shadow-extra-dark' to="/resources">
                                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer' style={{ backgroundImage: `url(${Nav4})` }}>
                                     <h5>Resources</h5>
                                     <SourceRounded />
                                 </div>
-                            </div>
+                            </Link>
                             {/* card5 */}
-                            <div className='overflow-hidden hover:shadow-extra-dark'>
+                            <Link className='overflow-hidden hover:shadow-extra-dark' to="/photos">
                                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer' style={{ backgroundImage: `url(${Nav1})` }}>
                                     <h5>Photos</h5>
                                     <PhotoSizeSelectLarge />
                                 </div>
-                            </div>
+                            </Link>
                             {/* card6 */}
-                            <div className='overflow-hidden hover:shadow-extra-dark'>
+                            <Link className='overflow-hidden hover:shadow-extra-dark' to="/visitors">
                                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer hover:shadow-extra-dark' style={{ backgroundImage: `url(${Nav2})` }}>
                                     <h5>Contact</h5>
                                     <ContactMailRounded />
                                 </div>
-                            </div>
+                            </Link>
 
                         </div>
 
