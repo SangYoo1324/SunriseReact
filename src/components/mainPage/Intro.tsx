@@ -143,13 +143,13 @@ function intro(props) {
                                 </div>
                             </Link>
                             {/* card6 */}
-                            <Link className='overflow-hidden hover:shadow-extra-dark' to="/visitors">
+                            {/* <Link className='overflow-hidden hover:shadow-extra-dark' to="/visitors#contact">
                                 <div className='bg-center bg-cover rounded-lg flex justify-between items-center px-5 py-8 text-gray-100
                 transform transition-transform duration-200 hover:scale-105 cursor-pointer hover:shadow-extra-dark' style={{ backgroundImage: `url(${Nav2})` }}>
                                     <h5>Contact</h5>
                                     <ContactMailRounded />
                                 </div>
-                            </Link>
+                            </Link> */}
 
                         </div>
 
