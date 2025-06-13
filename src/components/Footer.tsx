@@ -56,7 +56,7 @@ function Footer(props) {
             </div>
             {/* very bottom */}
         <div className='flex flex-col lg:flex-row items-center max-w-[1400px] px-2 py-4 mx-auto justify-between text-center text-gray-500'>
-            <p className='py-4'>2024 Sunrise Christ Community Church, Media Team. All rights reserved</p>
+            <p className='py-4'>2025 Sunrise Christ Community Church, Media Team. All rights reserved</p>
 
             <div className='flex justify-between w-[70px] pt-4 text-2xl'>
                 <FaFacebook size={30}/>
