@@ -37,10 +37,10 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
-          docker ps
-          docker exec nginxserver bash -c "rm -rf /usr/share/nginx/html/*"
-          docker cp ~/dist.tar.gz nginxserver:/usr/share/nginx/html/
-          docker exec nginxserver bash -c \
+          sudo docker ps
+          sudo docker exec nginxserver bash -c "rm -rf /usr/share/nginx/html/*"
+          sudo docker cp ~/dist.tar.gz nginxserver:/usr/share/nginx/html/
+          sudo docker exec nginxserver bash -c \
           "cd usr/share/nginx/html && tar -xzf dist.tar.gz\
            --strip-components=1 && rm dist.tar.gz"
 
