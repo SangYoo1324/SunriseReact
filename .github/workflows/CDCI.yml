@@ -1,0 +1,13 @@
+name: Deploy Vite App to EC2 Nginx Container
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      -name: Checkout code
+       uses: actions/checkout@v3
