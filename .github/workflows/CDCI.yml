@@ -37,10 +37,8 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
-          sudo docker ps
-          sudo docker exec nginxserver bash -c "rm -rf /usr/share/nginx/html/*"
-          sudo docker cp ~/dist.tar.gz nginxserver:/usr/share/nginx/html/
-          sudo docker exec nginxserver bash -c \
-          "cd usr/share/nginx/html && tar -xzf dist.tar.gz\
-           --strip-components=1 && rm dist.tar.gz"
+          tar -xzf dist.tar.gz
+          docker rm -f sunrise || true
+          docker build -t sunrise /home/ubuntu/dist/.
+          docker run -d --name sunrise -p 3000:3000 sunrise
 
