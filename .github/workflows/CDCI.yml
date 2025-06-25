@@ -21,7 +21,7 @@ jobs:
     - name: Compress dist folder
       run: 
         |
-        cp /Dockerfile dist/
+        cp Dockerfile dist/
         tar -czf dist.tar.gz dist
     
     - name: Copy dist to EC2
