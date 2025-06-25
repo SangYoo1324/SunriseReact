@@ -5,7 +5,7 @@ FROM node:20-alpine
 WORKDIR /app
 
 # dist만 사용하므로 빌드 결과물만 복사
-COPY /home/ubuntu/dist/ ./dist
+COPY ./ ./dist
 
 # 정적 파일 서빙용 serve 설치
 RUN npm install -g serve
