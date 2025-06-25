@@ -16,10 +16,13 @@ jobs:
       run: npm ci
     
     - name: Build Vite project
-      run: npm run build
+      run: npm run build 
     
     - name: Compress dist folder
-      run: tar -czf dist.tar.gz dist
+      run: 
+        |
+        cp /Dockerfile dist/
+        tar -czf dist.tar.gz dist
     
     - name: Copy dist to EC2
       uses: appleboy/scp-action@master
